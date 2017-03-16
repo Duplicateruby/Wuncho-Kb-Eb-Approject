@@ -30,7 +30,7 @@ public class MyPanel extends JPanel {
 //        }
 //        theBalls.add(new Squareball(50,50,30));
 //        theBalls.add(new Borderball(350,350,10,5));
-        theBalls.add(new Ball(350,350,100));
+        theBalls.add(new Ball(350,350,5, 10));
         timer = new Timer(15, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -90,5 +90,25 @@ public class MyPanel extends JPanel {
         int vx = (int)(Math.random()*21-10);
         int vy = (int)(Math.random()*21-10);
         return new Ball(x,y,vx,vy);
+    }
+
+    public static void main(String[] args) {
+        JFrame window = new JFrame("On Our Way To Viridian City");
+
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        window.setBounds(500, 200, 600, 600); //(x, y, w, h)
+
+        MyPanel panel = new MyPanel(600,600);
+
+        panel.setFocusable(true);
+
+        panel.grabFocus();
+
+        window.add(panel);
+
+        window.setVisible(true);
+
+
     }
 }
