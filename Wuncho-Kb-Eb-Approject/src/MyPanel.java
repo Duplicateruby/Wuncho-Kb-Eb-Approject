@@ -31,6 +31,14 @@ public class MyPanel extends JPanel {
 //        theBalls.add(new Squareball(50,50,30));
 //        theBalls.add(new Borderball(350,350,10,5));
         theBalls.add(new Ball(350,350,5, 10));
+        int n = 0;
+        for (int i = 0; i < 15 ; i++) {
+            n = n+5;
+            theBalls.add(new Ball(350+(2*n), 5*n,5,10));
+
+
+        }
+
         timer = new Timer(15, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -73,11 +81,18 @@ public class MyPanel extends JPanel {
         });
     }
 
-    public void paint(Graphics g) {
-        super.paint(g);
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
         Graphics2D g2 = (Graphics2D) g;
+        g2.clearRect(0, 0, getWidth(), getHeight());
+        int n = 0;
+
+
         for (Ball j: theBalls){
             j.draw(g2);
+
+
         }
         //  you cna code movement in the paint with the ball.move However, is not reccomended to code inside the paint
     }
