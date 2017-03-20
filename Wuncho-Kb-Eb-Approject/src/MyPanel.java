@@ -57,6 +57,12 @@ public class MyPanel extends JPanel {
             public void mouseClicked(MouseEvent mouseEvent) {
                 System.out.println(mouseEvent.getX());
                 System.out.println(mouseEvent.getY());
+
+               int  x=(mouseEvent.getX());
+               int  y=(mouseEvent.getY());
+//                updateClicker(x, y);
+                theBalls.add(new Clicker(x, y));
+
             }
 
             @Override
@@ -106,6 +112,7 @@ public class MyPanel extends JPanel {
         int vy = (int)(Math.random()*21-10);
         return new Ball(x,y,vx,vy);
     }
+
 
     public static void main(String[] args) {
         JFrame window = new JFrame("On Our Way To Viridian City");
