@@ -17,6 +17,15 @@ public class Ball {
 
 
     }
+
+    public void setDiameter(int diameter) {
+        this.diameter = diameter;
+    }
+
+    public int getDiameter() {
+        return diameter;
+    }
+
     public void draw(Graphics2D g2){
         g2.setColor(color);
         g2.fillOval(x,y,diameter,diameter);
