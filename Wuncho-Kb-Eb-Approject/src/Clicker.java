@@ -14,5 +14,11 @@ public class Clicker extends Ball {
 
     }
 
+    @Override
+    public void move(int width, int Height){
+        super.move(width,Height);
+
+    }
+
 
 }

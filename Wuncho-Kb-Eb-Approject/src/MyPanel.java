@@ -63,7 +63,8 @@ public class MyPanel extends JPanel {
                int  x=(mouseEvent.getX());
                int  y=(mouseEvent.getY());
 //                updateClicker(x, y);
-                theBalls.add(new Clicker(x, y));
+
+                theBalls.add(new Clicker(x,y));
 
             }
 

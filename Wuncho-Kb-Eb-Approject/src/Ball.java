@@ -20,6 +20,7 @@ public class Ball {
     public void draw(Graphics2D g2){
         g2.setColor(color);
         g2.fillOval(x,y,diameter,diameter);
+
     }
     public void move(int w, int h){
 ////        int ax = (int)(Math.random()*4-2);
