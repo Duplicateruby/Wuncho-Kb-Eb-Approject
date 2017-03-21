@@ -64,6 +64,7 @@ public class MyPanel extends JPanel {
                int  y=(mouseEvent.getY());
 //                updateClicker(x, y);
 
+
                 theBalls.add(new Clicker(x,y));
 
             }
@@ -100,6 +101,8 @@ public class MyPanel extends JPanel {
         int l = (int)(Math.random() *256) ;
         int b = (int)(Math.random() *256) ;
         g2.setColor(new Color(r, l, b));
+
+
 
 
         for (Ball j: theBalls){
