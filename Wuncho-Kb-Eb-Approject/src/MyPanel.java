@@ -30,11 +30,13 @@ public class MyPanel extends JPanel {
 //        }
 //        theBalls.add(new Squareball(50,50,30));
 //        theBalls.add(new Borderball(350,350,10,5));
-        theBalls.add(new Ball(350,350,5, 10));
-        int n = 0;
+//        theBalls.add(new Ball(350,350,5, 10));
+        int n = 10;
         for (int i = 0; i < 15 ; i++) {
-            n = n+5;
-            theBalls.add(new Ball(350+(2*n), 5*n,5,10));
+            int x = (int)(Math.random()*getWidth());
+            int y = (int)(Math.random()*getHeight());
+            theBalls.add(new Ball(x, y,5,10));
+
 
 
         }
