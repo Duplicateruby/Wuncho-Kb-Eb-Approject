@@ -96,6 +96,10 @@ public class MyPanel extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
         g2.clearRect(0, 0, getWidth(), getHeight());
         int n = 0;
+        int r = (int)(Math.random() *256) ;
+        int l = (int)(Math.random() *256) ;
+        int b = (int)(Math.random() *256) ;
+        g2.setColor(new Color(r, l, b));
 
 
         for (Ball j: theBalls){
@@ -103,6 +107,7 @@ public class MyPanel extends JPanel {
 
 
         }
+
         //  you cna code movement in the paint with the ball.move However, is not reccomended to code inside the paint
     }
     public Ball randBall(){
