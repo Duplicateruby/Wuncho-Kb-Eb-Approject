@@ -95,12 +95,13 @@ public class MyPanel extends JPanel {
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D) g;
+        g2.setBackground(Color.black);
         g2.clearRect(0, 0, getWidth(), getHeight());
         int n = 0;
-        int r = (int)(Math.random() *256) ;
-        int l = (int)(Math.random() *256) ;
-        int b = (int)(Math.random() *256) ;
-        g2.setColor(new Color(r, l, b));
+//        int r = (int)(Math.random() *256) ;
+//        int l = (int)(Math.random() *256) ;
+//        int b = (int)(Math.random() *256) ;
+//        g2.setColor(new Color(r, l, b));
 
 
 

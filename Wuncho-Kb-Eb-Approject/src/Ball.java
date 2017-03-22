@@ -14,7 +14,10 @@ public class Ball {
         this.vy = vy;
         this.vx = vx;
         diameter = 25;
-
+        int r = (int)(Math.random() *256) ;
+        int l = (int)(Math.random() *256) ;
+        int b = (int)(Math.random() *256) ;
+        color = (new Color(r, l, b));
 
     }
 

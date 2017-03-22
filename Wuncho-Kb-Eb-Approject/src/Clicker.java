@@ -17,8 +17,8 @@ public class Clicker extends Ball {
     @Override
     public void move(int width, int Height) {
         setDiameter(getDiameter() + 2);
-        if (getDiameter() > 110) {
-            setDiameter(110);
+        if (getDiameter() > 130) {
+            setDiameter(130);
 
         }
 
