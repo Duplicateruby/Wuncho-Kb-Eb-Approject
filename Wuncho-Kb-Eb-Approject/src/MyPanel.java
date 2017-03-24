@@ -10,6 +10,11 @@ import java.util.ArrayList;
 /**
  * Created by kaire_bernier on 10/5/16.
  */
+// array of clicker
+    // for each clicker intersects ball
+    // if ball inters
+// ball . remove
+// clicker. add
 public class MyPanel extends JPanel {
     private ArrayList <Ball> theBalls;// can hold an abritrary # of elemetns
     private Timer timer;

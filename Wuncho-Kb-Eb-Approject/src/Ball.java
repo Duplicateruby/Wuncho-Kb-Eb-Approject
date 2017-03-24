@@ -71,12 +71,16 @@ public class Ball {
 
 
     }
-//    public boolean intersects(Ball other){
-//        int r = diameter/2;
-//        int D = diameter* diameter;
-//        int z = (this.x -other.x) *(this.x - other.x);
-//        int c = (a.y - b.y) *(a.y - b.y);
-//        D = z*c;
-//
-//    }
+    public boolean intersects(Ball other){
+        int r = diameter/2;
+        int D = diameter* diameter;
+        int z = (this.x -other.x) *(this.x - other.x);
+        int c = (this.y - other.y) *(this.y - other.y);
+        if (D > (z+c) ){
+            return false;
+        }
+        else
+        return true;
+
+    }
 }
