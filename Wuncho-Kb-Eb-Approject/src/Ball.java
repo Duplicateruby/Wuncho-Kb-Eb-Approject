@@ -21,6 +21,21 @@ public class Ball {
 
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
 
     public void setDiameter(int diameter) {
         this.diameter = diameter;
@@ -77,10 +92,13 @@ public class Ball {
         int z = (this.x -other.x) *(this.x - other.x);
         int c = (this.y - other.y) *(this.y - other.y);
         if (D > (z+c) ){
-            return false;
+            return true;
         }
-        else
-        return true;
+        else{
+            return false;
+
+
+        }
 
     }
 }
