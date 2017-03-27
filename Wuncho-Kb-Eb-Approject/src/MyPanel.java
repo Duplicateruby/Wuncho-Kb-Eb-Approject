@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class MyPanel extends JPanel {
     private ArrayList<Ball> theBalls;// can hold an abritrary # of elemetns
     private ArrayList<Clicker> click;
+    private int countclick;
 
 
     private Timer timer;
@@ -27,6 +28,7 @@ public class MyPanel extends JPanel {
         // Create the array list Object and add 10 ball objects to it
         theBalls = new ArrayList<Ball>();
         click = new ArrayList<Clicker>();
+        countclick = 0;
 
 //        for (int i = 0; i < 3; i++) {
 //            theBalls.add(randBall());
@@ -57,8 +59,17 @@ public class MyPanel extends JPanel {
                 for (Ball b : theBalls) {
                     b.move(getWidth(), getHeight());
                 }
-                for(Clicker c: click)
-                    c.move(getWidth(),getHeight());
+                for (int i = 0; i < click.size(); i++) {
+                    Clicker c = click.get(i);
+
+                    c.move(getWidth(), getHeight());
+
+                    if(c.getCounter() > 30){
+                        click.remove(i);
+
+
+                    }
+                }
 
                 for (int i = 0; i < theBalls.size(); i++) {
                     Ball b = theBalls.get(i);
@@ -88,10 +99,14 @@ public class MyPanel extends JPanel {
 
                 int x = (mouseEvent.getX());
                 int y = (mouseEvent.getY());
+
 //                updateClicker(x, y);
+                if (countclick < 1) {
 
 
-                click.add(new Clicker(x, y));
+                    click.add(new Clicker(x, y));
+                    countclick++;
+                }
 
             }
 

@@ -5,11 +5,12 @@ import java.awt.*;
  */
 public class Clicker extends Ball {
 
+    int counter;
     public Clicker( int x, int y){
         super(x,y,0,0);
 
 
-
+counter=0;
 
 
     }
@@ -21,6 +22,7 @@ public class Clicker extends Ball {
             setDiameter(130);
 
         }
+        counter++;
         // try to find if the difference between two radi are of two different balls iner
 
 
@@ -34,5 +36,7 @@ public class Clicker extends Ball {
         super.draw(g2);
     }
 
-
+    public int getCounter() {
+        return counter;
+    }
 }
