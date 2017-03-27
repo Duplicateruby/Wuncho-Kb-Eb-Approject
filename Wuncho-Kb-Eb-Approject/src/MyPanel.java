@@ -16,13 +16,14 @@ import java.util.ArrayList;
 // ball . remove
 // clicker. add
 public class MyPanel extends JPanel {
-    private ArrayList <Ball> theBalls;// can hold an abritrary # of elemetns
-    private ArrayList<Clicker>click;
+    private ArrayList<Ball> theBalls;// can hold an abritrary # of elemetns
+    private ArrayList<Clicker> click;
 
 
     private Timer timer;
+
     public MyPanel(int w0, int h0) {
-        setSize(w0,h0);
+        setSize(w0, h0);
         // Create the array list Object and add 10 ball objects to it
         theBalls = new ArrayList<Ball>();
         click = new ArrayList<Clicker>();
@@ -42,30 +43,30 @@ public class MyPanel extends JPanel {
 //        theBalls.add(new Borderball(350,350,10,5));
 //        theBalls.add(new Ball(350,350,5, 10));
         int n = 10;
-        for (int i = 0; i < 15 ; i++) {
-            int x = (int)(Math.random()*getWidth());
-            int y = (int)(Math.random()*getHeight());
-            theBalls.add(new Ball(x, y,5,10));
-
+        for (int i = 0; i < 15; i++) {
+            int x = (int) (Math.random() * getWidth());
+            int y = (int) (Math.random() * getHeight());
+            theBalls.add(new Ball(x, y, 5, 10));
 
 
         }
 
-        timer = new Timer(15, new ActionListener() {
+        timer = new Timer(25, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                for(Ball b: theBalls){
-                    b.move(getWidth(),getHeight());
+                for (Ball b : theBalls) {
+                    b.move(getWidth(), getHeight());
                 }
                 for (int i = 0; i < theBalls.size(); i++) {
                     Ball b = theBalls.get(i);
                     for (int j = 0; j < click.size(); j++) {
-                        Clicker  c = click.get(j);
-                          if (b.intersects(c)) {
-                                theBalls.remove(i);
-                              Clicker newClicker = new Clicker(b.getX(), b.getY());
-                              click. add(newClicker);
-                            }
+                        Clicker c = click.get(j);
+                        if (b.intersects(c)) {
+                            theBalls.remove((i));
+                            Clicker newClicker = new Clicker(b.getX(), b.getY());
+                            click.add(newClicker);
+
+                        }
                     }
                 }
                 repaint();
@@ -81,14 +82,12 @@ public class MyPanel extends JPanel {
                 System.out.println(mouseEvent.getX());
                 System.out.println(mouseEvent.getY());
 
-               int  x=(mouseEvent.getX());
-               int  y=(mouseEvent.getY());
+                int x = (mouseEvent.getX());
+                int y = (mouseEvent.getY());
 //                updateClicker(x, y);
 
 
-
-
-                theBalls.add(new Clicker(x,y));
+                click.add(new Clicker(x, y));
 
             }
 
@@ -127,25 +126,29 @@ public class MyPanel extends JPanel {
 //        g2.setColor(new Color(r, l, b));
 
 
-
-
-        for (Ball j: theBalls){
+        for (Ball j : theBalls) {
             j.draw(g2);
+
+
+        }
+        for (Clicker f : click) {
+            f.draw(g2);
 
 
         }
 
         //  you cna code movement in the paint with the ball.move However, is not reccomended to code inside the paint
     }
-    public Ball randBall(){
+
+    public Ball randBall() {
         // makes a random ball at random location, with a random velocity
 //        int x = (int)(Math.random()*getWidth()-50);
 //        int y = (int)(Math.random()*getHeight()-50);
-        int x = getWidth()/2 -25;
-        int y = getHeight()/2 -25;
-        int vx = (int)(Math.random()*21-10);
-        int vy = (int)(Math.random()*21-10);
-        return new Ball(x,y,vx,vy);
+        int x = getWidth() / 2 - 25;
+        int y = getHeight() / 2 - 25;
+        int vx = (int) (Math.random() * 21 - 10);
+        int vy = (int) (Math.random() * 21 - 10);
+        return new Ball(x, y, vx, vy);
     }
 
 
@@ -156,7 +159,7 @@ public class MyPanel extends JPanel {
 
         window.setBounds(500, 200, 600, 600); //(x, y, w, h)
 
-        MyPanel panel = new MyPanel(600,600);
+        MyPanel panel = new MyPanel(600, 600);
 
         panel.setFocusable(true);
 
