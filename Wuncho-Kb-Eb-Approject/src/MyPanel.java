@@ -57,6 +57,9 @@ public class MyPanel extends JPanel {
                 for (Ball b : theBalls) {
                     b.move(getWidth(), getHeight());
                 }
+                for(Clicker c: click)
+                    c.move(getWidth(),getHeight());
+
                 for (int i = 0; i < theBalls.size(); i++) {
                     Ball b = theBalls.get(i);
                     for (int j = 0; j < click.size(); j++) {
@@ -65,7 +68,8 @@ public class MyPanel extends JPanel {
                             theBalls.remove((i));
                             Clicker newClicker = new Clicker(b.getX(), b.getY());
                             click.add(newClicker);
-
+                            j = click.size(); //kill the clicker loop
+                            i = theBalls.size();
                         }
                     }
                 }

@@ -19,11 +19,11 @@ public class Sprite {
     public static final int NORTH = 90, SOUTH = 270, WEST = 180, EAST = 0, NE = 45, NW = 135, SW = 225, SE = 315;
 
 
-    public Sprite(int x, int y, int direction) {
+    public Sprite(int x, int y) {
         loc = new Point(x, y);
-        dir = direction;
-        setPic("image.png", NORTH);
-        speed = 5;
+
+
+
 
         id = nextID;
         nextID++;
@@ -55,35 +55,7 @@ public class Sprite {
         loc.translate(dx, dy);
     }
 
-    /**
-     * Changes the image file that this Sprite uses to draw.
-     *
-     * @param fileName    the case-sensitive file name
-     * @param orientation the direction that the image file is facing
-     */
-    public void setPic(String fileName, int orientation) {
-        try {
-            pic = ImageIO.read(new File("res/" + fileName));
-            picOrientation = orientation;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
-    /**
-     * Changes the direction the Sprite is facing by the given angle.
-     *
-     * @param delta change in angle measured in degrees
-     */
-    public void rotateBy(int delta) {
-        setDir(dir + delta);
-    }
-
-    /**
-     * Changes the direction the Sprite is facing to the given angle.
-     *
-     * @param newDir the new direction measured in degrees
-     */
     public void setDir(int newDir) {
         dir = newDir;
     }

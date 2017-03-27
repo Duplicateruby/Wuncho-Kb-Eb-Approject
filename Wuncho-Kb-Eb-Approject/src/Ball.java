@@ -79,15 +79,14 @@ public class Ball {
 
     }
     public boolean intersects(Ball other){
-        int D = diameter * diameter;
         int z = (this.x -other.x) *(this.x - other.x);
         int c = (this.y - other.y) *(this.y - other.y);
 
-        if ((z+c) <((this.diameter/2) + (other.diameter/2))){
-            return false;
+        if (z+c < Math.pow( this.diameter/2 + other.diameter/2, 2)){
+            return true;
         }
         else{
-            return true;
+            return false;
 
 
         }
