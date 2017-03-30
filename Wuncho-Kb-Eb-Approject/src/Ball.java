@@ -7,6 +7,7 @@ public class Ball {
     private int vx,vy, x,y, diameter;
     private int count;
     private Color color;
+    private int level;
 
     public Ball(int x, int y, int vx, int vy){
         this.x = x;

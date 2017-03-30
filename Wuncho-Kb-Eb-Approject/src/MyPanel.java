@@ -27,6 +27,8 @@ public class MyPanel extends JPanel {
     private ArrayList<Ball> theBalls;// can hold an abritrary # of elemetns
     private ArrayList<Clicker> click;
     private int countclick;
+    private int level;
+    private int ballcount;
 
 
     private Timer timer;
@@ -37,6 +39,10 @@ public class MyPanel extends JPanel {
         theBalls = new ArrayList<Ball>();
         click = new ArrayList<Clicker>();
         countclick = 0;
+        level = 0;
+        ballcount = 0;
+
+
 
 //        for (int i = 0; i < 3; i++) {
 //            theBalls.add(randBall());
@@ -53,17 +59,35 @@ public class MyPanel extends JPanel {
 //        theBalls.add(new Borderball(350,350,10,5));
 //        theBalls.add(new Ball(350,350,5, 10));
         int n = 10;
-        for (int i = 0; i < 15; i++) {
-            int x = (int) (Math.random() * getWidth());
-            int y = (int) (Math.random() * getHeight());
-            theBalls.add(new Ball(x, y, 5, 10));
 
-
+//        for (int i = 0; i < 15; i++) {
+//            int x = (int) (Math.random() * getWidth());
+//            int y = (int) (Math.random() * getHeight());
+//            theBalls.add(new Ball(x, y, 5, 10));
+//
+//
+//
+//        }}
+//        if ( level ==1 ){
+//            for (int i = 0; i < 30; i++) {
+//                int x = (int) (Math.random() * getWidth());
+//                int y = (int) (Math.random() * getHeight());
+//                theBalls.add(new Ball(x, y, 5, 10));
+//
+//
+//            }
+//
+//        }
+        loadLevel(0);
+        if (ballcount == 2) {
+            loadLevel(1);
         }
 
         timer = new Timer(25, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+
+                // levels
                 for (Ball b : theBalls) {
                     b.move(getWidth(), getHeight());
                 }
@@ -76,8 +100,15 @@ public class MyPanel extends JPanel {
                         click.remove(i);
 
 
+
+                    }
+                    if (c.getCounter()>40){
+                        if (ballcount <5){
+                            System.exit(0);
+                        }
                     }
                 }
+
 
                 for (int i = 0; i < theBalls.size(); i++) {
                     Ball b = theBalls.get(i);
@@ -87,16 +118,30 @@ public class MyPanel extends JPanel {
                             theBalls.remove((i));
                             Clicker newClicker = new Clicker(b.getX(), b.getY());
                             click.add(newClicker);
+
                             j = click.size(); //kill the clicker loop
                             i = theBalls.size();
+                            ballcount ++;
+                            System.out.println(ballcount);
+
                         }
                     }
                 }
+
+                if (ballcount == 2) {
+                    loadLevel(1);
+                }
+
+
                 repaint();
+
 
             }
         });
         timer.start();
+        System.out.println(ballcount);
+
+
 
 
         addMouseListener(new MouseListener() {
@@ -115,6 +160,7 @@ public class MyPanel extends JPanel {
                     click.add(new Clicker(x, y));
                     countclick++;
                 }
+
 
             }
 
@@ -163,6 +209,23 @@ public class MyPanel extends JPanel {
 
 
         }
+//        if (ballcount == 5){
+//            level = 1;
+//            g2.setBackground(Color.black);
+//            for (Ball j : theBalls) {
+//                j.draw(g2);
+//
+//
+//            }
+//            for (Clicker f : click) {
+//                f.draw(g2);
+//
+//
+//            }
+
+
+
+
 
         //  you cna code movement in the paint with the ball.move However, is not reccomended to code inside the paint
     }
@@ -178,6 +241,29 @@ public class MyPanel extends JPanel {
         return new Ball(x, y, vx, vy);
     }
 
+    public void loadLevel(int levelNum){
+        theBalls.clear();
+        if (level == 0){
+            for (int i = 0; i < 15; i++) {
+                int x = (int) (Math.random() * getWidth());
+                int y = (int) (Math.random() * getHeight());
+                theBalls.add(new Ball(x, y, 5, 10));
+
+
+
+            }
+        }
+        if (level ==1) {
+            theBalls.clear();
+            ballcount = 0;
+            countclick -- ;
+            for (int i = 0; i < 30; i++) {
+                int x = (int) (Math.random() * getWidth());
+                int y = (int) (Math.random() * getHeight());
+                theBalls.add(new Ball(x, y, 5, 10));
+            }
+        }
+    }
 
     public static void main(String[] args) {
         JFrame window = new JFrame("On Our Way To Viridian City");
