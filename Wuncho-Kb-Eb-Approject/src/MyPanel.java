@@ -79,9 +79,8 @@ public class MyPanel extends JPanel {
 //
 //        }
         loadLevel(0);
-        if (ballcount == 2) {
-            loadLevel(1);
-        }
+
+
 
         timer = new Timer(25, new ActionListener() {
             @Override
@@ -243,7 +242,7 @@ public class MyPanel extends JPanel {
 
     public void loadLevel(int levelNum){
         theBalls.clear();
-        if (level == 0){
+        if (levelNum == 0){
             for (int i = 0; i < 15; i++) {
                 int x = (int) (Math.random() * getWidth());
                 int y = (int) (Math.random() * getHeight());
@@ -253,8 +252,9 @@ public class MyPanel extends JPanel {
 
             }
         }
-        if (level ==1) {
+        if (levelNum ==1) {
             theBalls.clear();
+            click.clear();
             ballcount = 0;
             countclick -- ;
             for (int i = 0; i < 30; i++) {
