@@ -1,3 +1,7 @@
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+
+import javax.sound.sampled.AudioSystem;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -5,7 +9,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Point2D;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
+import javax.sound.sampled.Clip;
 
 /**
  * Created by kaire_bernier on 10/5/16.
@@ -188,6 +196,42 @@ public class MyPanel extends JPanel {
 
         window.setVisible(true);
 
+        File mus = new File("Kahoot.wav");
+        PlaySound("Kahoot.wav");
+
+
 
     }
+    static void PlaySound(String fileName){//File Sound){
+        try{
+//            Clip slip = AudioSystem.getClip();
+//            slip.open(AudioSystem.getAudioInputStream(Sound));
+//            slip.start();
+//
+//            Thread.sleep(slip.getMicrosecondLength()/1000);
+             InputStream in = new FileInputStream(fileName);
+             AudioStream ain = new AudioStream(in);
+            AudioPlayer.player.start(ain);
+            final String name = fileName;
+
+            Timer t = new Timer(40000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent actionEvent) {
+//                    AudioPlayer.player.stop(ain);
+                    try {
+
+                        InputStream in = new FileInputStream(name);
+                        AudioStream ain = new AudioStream(in);
+
+                        AudioPlayer.player.start(ain);
+                    }catch(Exception e){e.printStackTrace();}
+                }
+            });
+            t.start();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
 }
