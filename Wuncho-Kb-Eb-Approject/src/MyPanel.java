@@ -4,10 +4,7 @@ import sun.audio.AudioStream;
 import javax.sound.sampled.AudioSystem;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.FileInputStream;
@@ -29,6 +26,7 @@ public class MyPanel extends JPanel {
     private int countclick;
     private int level;
     private int ballcount;
+    private int target;
 
 
     private Timer timer;
@@ -41,6 +39,7 @@ public class MyPanel extends JPanel {
         countclick = 0;
         level = 0;
         ballcount = 0;
+        target=0;
 
 
 
@@ -78,7 +77,7 @@ public class MyPanel extends JPanel {
 //            }
 //
 //        }
-        loadLevel(0);
+        loadLevel();
 
 
 
@@ -127,9 +126,13 @@ public class MyPanel extends JPanel {
                     }
                 }
 
-                if (ballcount == 2) {
-                    loadLevel(1);
+                if (ballcount >= target) {
+
+                    loadLevel();
                 }
+
+
+
 
 
                 repaint();
@@ -146,6 +149,13 @@ public class MyPanel extends JPanel {
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
+
+
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
                 System.out.println(mouseEvent.getX());
                 System.out.println(mouseEvent.getY());
 
@@ -159,12 +169,6 @@ public class MyPanel extends JPanel {
                     click.add(new Clicker(x, y));
                     countclick++;
                 }
-
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent mouseEvent) {
 
             }
 
@@ -180,6 +184,30 @@ public class MyPanel extends JPanel {
 
             @Override
             public void mouseExited(MouseEvent mouseEvent) {
+
+            }
+        });
+        addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent keyEvent) {
+                int code = keyEvent.getKeyChar();
+                if (code== 'r'){
+                    level = 0;
+                    loadLevel();
+                    countclick =0;
+                    ballcount=0;
+
+                    level=1;
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent keyEvent) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent keyEvent) {
 
             }
         });
@@ -208,6 +236,9 @@ public class MyPanel extends JPanel {
 
 
         }
+        g2.setColor(Color.white);
+        g2.drawString("level = "+level,100 ,100);
+        g2.drawString("press r to reset",100,50);
 //        if (ballcount == 5){
 //            level = 1;
 //            g2.setBackground(Color.black);
@@ -240,29 +271,93 @@ public class MyPanel extends JPanel {
         return new Ball(x, y, vx, vy);
     }
 
-    public void loadLevel(int levelNum){
+    public void loadLevel(){
         theBalls.clear();
-        if (levelNum == 0){
-            for (int i = 0; i < 15; i++) {
+        if (level == 0){
+            for (int i = 0; i < 7; i++) {
                 int x = (int) (Math.random() * getWidth());
                 int y = (int) (Math.random() * getHeight());
                 theBalls.add(new Ball(x, y, 5, 10));
+                target = 2;
 
 
 
             }
         }
-        if (levelNum ==1) {
+        if (level ==1) {
             theBalls.clear();
             click.clear();
             ballcount = 0;
             countclick -- ;
+            target = 7;
+            for (int i = 0; i < 15; i++) {
+                int x = (int) (Math.random() * getWidth());
+                int y = (int) (Math.random() * getHeight());
+                theBalls.add(new Ball(x, y, 5, 10));
+            }
+        }
+        if (level ==2) {
+            theBalls.clear();
+            click.clear();
+            ballcount = 0;
+            countclick -- ;
+            target=15;
             for (int i = 0; i < 30; i++) {
                 int x = (int) (Math.random() * getWidth());
                 int y = (int) (Math.random() * getHeight());
                 theBalls.add(new Ball(x, y, 5, 10));
             }
         }
+        if (level ==3) {
+            theBalls.clear();
+            click.clear();
+            ballcount = 0;
+            countclick -- ;
+            target= 20;
+            for (int i = 0; i < 35; i++) {
+                int x = (int) (Math.random() * getWidth());
+                int y = (int) (Math.random() * getHeight());
+                theBalls.add(new Ball(x, y, 5, 10));
+            }
+        }
+        if (level ==4) {
+            theBalls.clear();
+            click.clear();
+            ballcount = 0;
+            countclick -- ;
+            target=24;
+            for (int i = 0; i < 40; i++) {
+                int x = (int) (Math.random() * getWidth());
+                int y = (int) (Math.random() * getHeight());
+                theBalls.add(new Ball(x, y, 5, 10));
+            }
+        }
+        if (level ==5) {
+            theBalls.clear();
+            click.clear();
+            ballcount = 0;
+            countclick -- ;
+            target=32;
+            for (int i = 0; i < 45; i++) {
+                int x = (int) (Math.random() * getWidth());
+                int y = (int) (Math.random() * getHeight());
+                theBalls.add(new Ball(x, y, 5, 10));
+            }
+        }
+        if (level ==6) {
+            theBalls.clear();
+            click.clear();
+            ballcount = 0;
+            countclick -- ;
+            target = 42;
+            for (int i = 0; i < 50; i++) {
+                int x = (int) (Math.random() * getWidth());
+                int y = (int) (Math.random() * getHeight());
+                theBalls.add(new Ball(x, y, 5, 10));
+            }
+        }
+
+        level++;
     }
 
     public static void main(String[] args) {
