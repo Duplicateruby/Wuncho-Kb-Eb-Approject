@@ -100,7 +100,7 @@ public class MyPanel extends JPanel {
 
 
                     }
-                    if (c.getCounter()>40){
+                    if (c.getCounter()>35){
                         if (ballcount <5){
                             System.exit(0);
                         }
@@ -237,8 +237,8 @@ public class MyPanel extends JPanel {
 
         }
         g2.setColor(Color.white);
-        g2.drawString("level = "+level,100 ,100);
-        g2.drawString("press r to reset",100,50);
+        g2.drawString("Level = "+level,41 ,17);
+        g2.drawString("Press r To Reset",460,560);
 //        if (ballcount == 5){
 //            level = 1;
 //            g2.setBackground(Color.black);
@@ -268,16 +268,20 @@ public class MyPanel extends JPanel {
         int y = getHeight() / 2 - 25;
         int vx = (int) (Math.random() * 21 - 10);
         int vy = (int) (Math.random() * 21 - 10);
-        return new Ball(x, y, vx, vy);
+        while(vx == 0 || vy == 0){
+             vx = (int) (Math.random() * 21 - 10);
+             vy = (int) (Math.random() * 21 - 10);
+        }
+        return new Ball(x, y, vx , vy);
     }
 
     public void loadLevel(){
         theBalls.clear();
         if (level == 0){
-            for (int i = 0; i < 7; i++) {
+            for (int i = 0; i < 10; i++) {
                 int x = (int) (Math.random() * getWidth());
                 int y = (int) (Math.random() * getHeight());
-                theBalls.add(new Ball(x, y, 5, 10));
+                theBalls.add(randBall());
                 target = 2;
 
 
@@ -293,7 +297,7 @@ public class MyPanel extends JPanel {
             for (int i = 0; i < 15; i++) {
                 int x = (int) (Math.random() * getWidth());
                 int y = (int) (Math.random() * getHeight());
-                theBalls.add(new Ball(x, y, 5, 10));
+                theBalls.add(randBall());
             }
         }
         if (level ==2) {
@@ -305,7 +309,7 @@ public class MyPanel extends JPanel {
             for (int i = 0; i < 30; i++) {
                 int x = (int) (Math.random() * getWidth());
                 int y = (int) (Math.random() * getHeight());
-                theBalls.add(new Ball(x, y, 5, 10));
+                theBalls.add(randBall());
             }
         }
         if (level ==3) {
@@ -317,7 +321,7 @@ public class MyPanel extends JPanel {
             for (int i = 0; i < 35; i++) {
                 int x = (int) (Math.random() * getWidth());
                 int y = (int) (Math.random() * getHeight());
-                theBalls.add(new Ball(x, y, 5, 10));
+                theBalls.add(randBall());
             }
         }
         if (level ==4) {
@@ -329,7 +333,7 @@ public class MyPanel extends JPanel {
             for (int i = 0; i < 40; i++) {
                 int x = (int) (Math.random() * getWidth());
                 int y = (int) (Math.random() * getHeight());
-                theBalls.add(new Ball(x, y, 5, 10));
+                theBalls.add(randBall());
             }
         }
         if (level ==5) {
@@ -341,7 +345,7 @@ public class MyPanel extends JPanel {
             for (int i = 0; i < 45; i++) {
                 int x = (int) (Math.random() * getWidth());
                 int y = (int) (Math.random() * getHeight());
-                theBalls.add(new Ball(x, y, 5, 10));
+                theBalls.add(randBall());
             }
         }
         if (level ==6) {
@@ -353,7 +357,7 @@ public class MyPanel extends JPanel {
             for (int i = 0; i < 50; i++) {
                 int x = (int) (Math.random() * getWidth());
                 int y = (int) (Math.random() * getHeight());
-                theBalls.add(new Ball(x, y, 5, 10));
+                theBalls.add(randBall());
             }
         }
 
