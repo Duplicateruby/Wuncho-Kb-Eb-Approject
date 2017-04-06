@@ -94,17 +94,13 @@ public class MyPanel extends JPanel {
 
                     c.move(getWidth(), getHeight());
 
-                    if(c.getCounter() > 30){
+                    if(c.getCounter() > 50){
                         click.remove(i);
 
 
 
                     }
-                    if (c.getCounter()>35){
-                        if (ballcount <5){
-                            System.exit(0);
-                        }
-                    }
+
                 }
 
 
@@ -239,6 +235,9 @@ public class MyPanel extends JPanel {
         g2.setColor(Color.white);
         g2.drawString("Level = "+level,41 ,17);
         g2.drawString("Press r To Reset",460,560);
+        if (level==8){
+            g2.drawString("You Win",300,300);
+        }
 //        if (ballcount == 5){
 //            level = 1;
 //            g2.setBackground(Color.black);
@@ -359,6 +358,9 @@ public class MyPanel extends JPanel {
                 int y = (int) (Math.random() * getHeight());
                 theBalls.add(randBall());
             }
+        }
+        if(level==9){
+            System.exit(0);
         }
 
         level++;
