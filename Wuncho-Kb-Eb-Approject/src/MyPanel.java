@@ -94,7 +94,7 @@ public class MyPanel extends JPanel {
 
                     c.move(getWidth(), getHeight());
 
-                    if(c.getCounter() > 50){
+                    if(c.getCounter() > 40){
                         click.remove(i);
 
 
